@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://dyqk6doubb42j"]
+
+[ext_resource type="Script" uid="uid://bfirs04sbernc" path="res://scripts/tower.gd" id="1_2x682"]
+[ext_resource type="PackedScene" uid="uid://by1yfeqnorov" path="res://scenes/projectile.tscn" id="2_ktxwe"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jfguu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g767u"]
+radius = 500.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g767u"]
+size = Vector2(30, 30)
+
+[node name="Tower" type="Node2D"]
+script = ExtResource("1_2x682")
+range = 500.0
+projectile_scene = ExtResource("2_ktxwe")
+
+[node name="Turret" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Turret"]
+position = Vector2(0, 2)
+sprite_frames = SubResource("SpriteFrames_jfguu")
+
+[node name="Muzzle" type="Marker2D" parent="Turret"]
+position = Vector2(16, 0)
+
+[node name="Range" type="Area2D" parent="."]
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
+shape = SubResource("CircleShape2D_g767u")
+
+[node name="FireTimer" type="Timer" parent="."]
+
+[node name="ClickArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea"]
+shape = SubResource("RectangleShape2D_g767u")
+
+[connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://by1yfeqnorov"]
+
+[ext_resource type="Texture2D" uid="uid://prvj1vd0jbi5" path="res://assets/new_atlas_texture.tres" id="1_c8fcr"]
+[ext_resource type="Script" uid="uid://cljbpucfoj6or" path="res://scripts/projectile.gd" id="1_q3m7n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c8fcr"]
+size = Vector2(16, 8)
+
+[node name="Projectile" type="Area2D"]
+script = ExtResource("1_q3m7n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_c8fcr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 5)
+texture = ExtResource("1_c8fcr")
