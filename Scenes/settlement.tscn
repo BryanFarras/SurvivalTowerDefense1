@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://f2037o0su2ew" path="res://Scenes/worker.tscn" id="2_gvhil"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_53odq"]
-size = Vector2(160, 106)
+size = Vector2(86, 56)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d6icy"]
 radius = 84.71718
@@ -15,7 +15,7 @@ script = ExtResource("1_xlpox")
 worker_scene = ExtResource("2_gvhil")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.13249998, 0.13250001)
+scale = Vector2(0.06999997, 0.07)
 texture = ExtResource("1_b47in")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
