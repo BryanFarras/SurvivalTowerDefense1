@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://j41sdpg74an8"]
+
+[ext_resource type="Script" uid="uid://fktnxpggubav" path="res://Scripts/worker_spawner.gd" id="1_0jcc5"]
+[ext_resource type="PackedScene" uid="uid://f2037o0su2ew" path="res://Scenes/worker.tscn" id="2_1kf4j"]
+
+[node name="WorkerSpawner" type="Node2D"]
+script = ExtResource("1_0jcc5")
+worker_scene = ExtResource("2_1kf4j")
+spawn_radius = 50.0

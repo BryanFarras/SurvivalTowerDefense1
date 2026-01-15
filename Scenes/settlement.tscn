@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://cyu21ung4qkb1"]
+
+[ext_resource type="Texture2D" uid="uid://by5nxhb5r630t" path="res://Assets/house.jpg" id="1_b47in"]
+[ext_resource type="Script" uid="uid://7wnmq3sd38dk" path="res://Scripts/settlement.gd" id="1_xlpox"]
+[ext_resource type="PackedScene" uid="uid://f2037o0su2ew" path="res://Scenes/worker.tscn" id="2_gvhil"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_53odq"]
+size = Vector2(160, 106)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d6icy"]
+radius = 84.71718
+
+[node name="Settlement" type="Node2D"]
+script = ExtResource("1_xlpox")
+worker_scene = ExtResource("2_gvhil")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.13249998, 0.13250001)
+texture = ExtResource("1_b47in")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_53odq")
+debug_color = Color(0.9699077, 0, 0.46141112, 0.41960785)
+
+[node name="SpawnZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnZone"]
+shape = SubResource("CircleShape2D_d6icy")
+
+[node name="WorkerContainer" type="Node2D" parent="."]
+
+[node name="WorkerCount" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
