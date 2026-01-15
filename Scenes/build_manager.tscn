@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=3 uid="uid://pwu07p8hcce2"]
+
+[ext_resource type="Script" uid="uid://61cjscxk3dew" path="res://scripts/managers/build_manager.gd" id="1_aenhx"]
+[ext_resource type="PackedScene" uid="uid://dbfg1tbm3k0cb" path="res://scenes/towers/tower1.tscn" id="2_tstln"]
+[ext_resource type="PackedScene" uid="uid://b7y06ni3u8co5" path="res://scenes/towers/tower2.tscn" id="3_ne738"]
+
+[node name="BuildManager" type="Node2D"]
+script = ExtResource("1_aenhx")
+tower_scenes = Array[PackedScene]([ExtResource("2_tstln"), ExtResource("3_ne738")])

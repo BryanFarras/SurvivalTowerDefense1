@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbfg1tbm3k0cb"]
+
+[ext_resource type="PackedScene" uid="uid://dyqk6doubb42j" path="res://scenes/towers/tower.tscn" id="1_lkjrt"]
+[ext_resource type="Texture2D" uid="uid://b4n2tl8bruems" path="res://assets/turret_atlas_texture.tres" id="3_8ndv6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v2ifw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_8ndv6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lkjrt"]
+radius = 500.0
+
+[node name="Tower1" instance=ExtResource("1_lkjrt")]
+
+[node name="AnimatedSprite2D" parent="Turret" index="0"]
+sprite_frames = SubResource("SpriteFrames_v2ifw")
+
+[node name="CollisionShape2D" parent="Range" index="0"]
+shape = SubResource("CircleShape2D_lkjrt")
