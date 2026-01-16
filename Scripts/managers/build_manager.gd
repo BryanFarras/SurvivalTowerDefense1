@@ -24,6 +24,7 @@ func _unhandled_input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		if is_cell_buildable(current_cell):
 			place_tower(current_cell)
+			cancel_build()
 
 func _process(delta):
 	if !build_mode or preview_instance == null:
@@ -53,8 +54,8 @@ func cancel_build():
 		preview_instance = null
 
 func select_tower(index: int):
+	enter_build_mode()
 	selected_tower_index = index
-	build_mode = true
 	_create_preview()
 
 func _create_preview():
@@ -87,12 +88,15 @@ func place_tower(cell: Vector2i):
 	tower.global_position = tilemap.map_to_local(cell)
 	tower.selected.connect(select_existing_tower)
 	get_tree().current_scene.add_child(tower)
-	
+	tower.set_selected(false)
+
 	occupy_tilemap.set_cell(cell, 1, Vector2i(3,0))
 
 func select_existing_tower(tower: Tower):
 	cancel_build()
 	if selected_tower == tower:
+		selected_tower.set_selected(false)
+		selected_tower = null
 		return
 
 	_clear_selection()

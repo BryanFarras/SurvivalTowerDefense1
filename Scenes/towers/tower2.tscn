@@ -1,18 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7y06ni3u8co5"]
+[gd_scene load_steps=4 format=3 uid="uid://b7y06ni3u8co5"]
 
-[ext_resource type="PackedScene" uid="uid://dyqk6doubb42j" path="res://scenes/towers/tower.tscn" id="1_nwb3x"]
-[ext_resource type="Texture2D" uid="uid://deqi241v8tmct" path="res://assets/generator.png" id="2_4ckre"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_dxgya"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_4ckre")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="PackedScene" uid="uid://dyqk6doubb42j" path="res://Scenes/towers/tower.tscn" id="1_nwb3x"]
+[ext_resource type="Texture2D" uid="uid://bf44ynkbvxvyh" path="res://Assets/kenney_tower-defense-top-down/PNG/Default size/towerDefense_tile250.png" id="2_s1wfm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nwb3x"]
 radius = 500.0
@@ -23,8 +12,13 @@ damage = 6
 range = 110.0
 attack_speed = 0.4
 
-[node name="AnimatedSprite2D" parent="Turret" index="0"]
-sprite_frames = SubResource("SpriteFrames_dxgya")
+[node name="Sprite2D" parent="Turret" index="0"]
+rotation = 1.5707964
+texture = ExtResource("2_s1wfm")
+offset = Vector2(0, -12)
 
-[node name="CollisionShape2D" parent="Range" index="0"]
+[node name="Muzzle" parent="Turret" index="1"]
+position = Vector2(42, 0)
+
+[node name="CollisionShape2D" parent="Range" index="1"]
 shape = SubResource("CircleShape2D_nwb3x")

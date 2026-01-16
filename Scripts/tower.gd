@@ -20,6 +20,7 @@ var placed_cell: Vector2i
 @onready var turret: Node2D = $Turret
 @onready var muzzle: Marker2D = $Turret/Muzzle
 @onready var collision_shape_2d: CollisionShape2D = $Range/CollisionShape2D
+@onready var range_preview: Sprite2D = $Range/RangePreview
 
 signal selected(tower: Tower)
 signal deselected()
@@ -41,6 +42,9 @@ func _ready():
 	var shape = collision_shape_2d.shape
 	shape.radius = range
 	
+	var range_scale = range / 300.0
+	range_preview.scale = Vector2(range_scale, range_scale)
+	
 	await get_tree().process_frame
 	can_be_selected = true
 
@@ -48,8 +52,7 @@ func _process(delta):
 	if current_target == null or !is_instance_valid(current_target):
 		return
 
-	var direction = current_target.global_position - turret.global_position
-	turret.rotation = direction.angle()
+	turret.look_at(current_target.global_position)
 
 func _select_new_target():
 	if enemies_in_range.size() > 0:
@@ -64,7 +67,7 @@ func _fire_projectile(target):
 	get_tree().current_scene.add_child(projectile)
 
 func set_selected(is_selected: bool):
-	modulate = Color.YELLOW if is_selected else Color.WHITE
+	range_preview.visible = is_selected
 
 func _on_body_entered(body):
 	if body.is_in_group("enemy"):
